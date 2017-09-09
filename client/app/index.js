@@ -7,9 +7,10 @@ class App extends Component {
     this.state = {
       test: ""
     }
-  };
+  }
 
   render(){
+    console.log("TEST RENDER ");
     return (
       <div>
         <h1>Mudiyum</h1>
