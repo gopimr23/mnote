@@ -9,12 +9,23 @@ class App extends Component {
     }
   }
 
+  
+
   render(){
     console.log("TEST RENDER ");
     return (
-      <div>
-        <h1>Mudiyum</h1>
-      </div>
+      <form >
+        <div>
+          <label htmlFor="note">Note</label>
+          <textarea name="note" id="note" cols="30" rows="10" value={}></textarea>
+        </div>
+        <div>
+          <label htmlFor="">Enable notification</label>
+          <input type="radio" name="notification" value="yes" value={}/>
+          <input type="radio" name="notification" value="no" valu={}/>
+        </div>
+        <input type="submit" onsubmit={this.}/>
+      </form>
     );
   }
 }

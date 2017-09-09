@@ -3,9 +3,11 @@ const path = require("path");
 const app = express();
 
 app.use(express.static('dest'));
-app.get("/", (req, res)=>{
-  console.log(path.resolve(__dirname + "/../client/index.html"));
+
+app.get("/", (req, res)=> {
   res.status(200).sendFile(path.resolve(__dirname + "/../client/index.html"));
 });
 
-app.listen(3000, ()=>{console.log("Listening...")});
+app.listen(3000, ()=> {
+  console.log("Listening...")
+});
