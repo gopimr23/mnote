@@ -10,5 +10,13 @@
   {
     "isNotify": "yes",
     "note": "welcome"
+  },
+  {
+    "note": "axio",
+    "isNotify": "yes"
+  },
+  {
+    "note": "test New folder structure",
+    "isNotify": "yes"
   }
 ]

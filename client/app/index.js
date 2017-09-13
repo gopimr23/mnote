@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
+import axios from "axios";
 
 class App extends Component {
   constructor(props){
@@ -29,10 +30,16 @@ class App extends Component {
     };
 
     this.state.notes.push(newNote);
-    console.log("New note", newNote);
-    this.setState({notes: this.state.notes});
-    this.setState({note : ""})
-    this.setState({isNotify : ""})
+    axios.post("/notes", newNote)
+      .then((response)=>{
+        console.log("New note saved", newNote);
+        this.setState({notes: this.state.notes});
+        this.setState({note : ""})
+        this.setState({isNotify : ""})
+      })
+      .catch((error)=>{
+        console.log("ERROR ", error)
+      });
   }
 
   render(){

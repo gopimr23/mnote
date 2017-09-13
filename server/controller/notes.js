@@ -3,7 +3,7 @@ const {promisify} = require("util");
 const readFilePromise = promisify(fs.readFile);
 const path = require("path");
 
-let filePath = path.resolve(__dirname,"./notes.json");
+let filePath = path.resolve(__dirname,"../notes.json");
 
 var getNotes = ()=> {
   return readFilePromise(filePath)
