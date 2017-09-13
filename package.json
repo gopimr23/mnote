@@ -5,12 +5,14 @@
   "main": "webpack.config.js",
   "dependencies": {
     "axios": "^0.16.2",
+    "bluebird": "^3.5.0",
     "body-parser": "^1.18.0",
     "couchbase": "^2.4.0",
     "express": "^4.15.4",
     "node-rdkafka": "^2.0.0",
     "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "react-dom": "^15.6.1",
+    "uuid": "^3.1.0"
   },
   "devDependencies": {
     "babel": "^6.23.0",
