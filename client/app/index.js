@@ -8,7 +8,8 @@ class App extends Component {
     this.state = {
       note: "",
       isNotify : false,
-      notes: []
+      notes: [],
+      mnote:""
     }
   }
 
@@ -22,6 +23,10 @@ class App extends Component {
     this.setState({isNotify: event.target.value});
   }
 
+  saveKafkaNote(event){
+    console.log("save kafka * ", event.target);
+    this.setState({mnote: event.target.value});
+  }
   saveNewNote(event){
     event.preventDefault();
     let newNote = {
@@ -41,10 +46,24 @@ class App extends Component {
         console.log("ERROR ", error)
       });
   }
+  saveNewKafkaNote(event){
+    event.preventDefault();
+    axios.post("/notes/kafka", {message: this.state.mnote})
+      .then((response)=>{
+        console.log("New note saved", newNote);
+        this.setState({notes: this.state.notes});
+        this.setState({note : ""})
+        this.setState({isNotify : ""})
+      })
+      .catch((error)=>{
+        console.log("ERROR ", error)
+      });
+  }
 
   render(){
     console.log("TEST RENDER ");
     return (
+      <div>
       <form  onSubmit={this.saveNewNote.bind(this)}>
         <div>
           <label htmlFor="note">Note</label>
@@ -61,6 +80,17 @@ class App extends Component {
         </div>
         <input type="submit" value="Save"/>
       </form>
+      <div>
+         <form  onSubmit={this.saveNewKafkaNote.bind(this)}>
+          <div>
+            <label htmlFor="mnote">Note</label>
+            <textarea name="mnote" id="mnote" cols="30" rows="10" value={this.state.mnote} onChange={this.saveKafkaNote.bind(this)}></textarea>
+          </div>
+          
+          <input type="submit" value="Save"/>
+        </form>
+      </div>
+    </div>
     );
   }
 }
