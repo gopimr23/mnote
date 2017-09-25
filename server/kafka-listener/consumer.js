@@ -1,5 +1,6 @@
 var Transform = require('stream').Transform;
 const Kafka = require('node-rdkafka');
+const db = require("../db/");
 
 var stream = Kafka.KafkaConsumer.createReadStream({
     'metadata.broker.list': 'localhost:9092',
@@ -16,12 +17,23 @@ var stream = Kafka.KafkaConsumer.createReadStream({
     if (err) console.log(err);
     process.exit(1);
   });
-  
-  stream.on('data', function(){
-    console.log(arguments);
+  function uint8arrayToStringMethod(myUint8Arr){
+    return String.fromCharCode.apply(null, myUint8Arr);
+ }
+  stream.on('data', function(data){
+    console.log("consumer - ");
+    var t = String.fromCharCode.apply(null, data);;
+    try{
+      var json = JSON.parse(t);
+      db.saveNotes(json)
+      console.log("JSON ______ ", json);
+    }catch(e){
+      console.log(e);
+      console.log("string ______ ", t);
+    }
   })
   stream.on('message', function(){
-    console.log(arguments);
+    console.log("Arguments ",arguments);
   }) 
   stream.on('error', function(err) {
     console.log(err);

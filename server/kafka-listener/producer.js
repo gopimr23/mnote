@@ -6,6 +6,7 @@ var producer = new Kafka.Producer({
   });
 
   const sendMessage = (message) => {
+    message = JSON.stringify(message);
     try {
       producer.produce(
         // Topic to send the message to

@@ -6,5 +6,5 @@ const notesMiddleware = require("./middleware/notes");
 router.get("/", notesMiddleware.getNotes);
 router.post("/", notesMiddleware.saveNotes);
 
-router.post("/kafka", notesMiddleware.getMessage);
+router.post("/kafka", notesMiddleware.saveKafkaMessage);
 module.exports = router;

@@ -21,7 +21,8 @@ function saveNotes (req, res) {
     })
 }
 
-function getMessage(req, res){
+function saveKafkaMessage(req, res){
+  console.log(" Message - ", req.body);
   notesController.getMessage(req.body)
   .then(()=>{
     res.status(201).send("Saved Successfully");
@@ -33,5 +34,5 @@ function getMessage(req, res){
 module.exports = {
   getNotes: getNotes,
   saveNotes: saveNotes,
-  getMessage: getMessage
+  saveKafkaMessage: saveKafkaMessage
 };

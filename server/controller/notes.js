@@ -14,7 +14,7 @@ var saveNotes = (note)=> {
 
 var getMessage = (message)=>{
   console.log("Message producer", message);
-  return kafkaProducer.sendMessage(message.message);
+  return kafkaProducer.sendMessage(message);
 }
 module.exports = {
   getNotes: getNotes,
